@@ -34,6 +34,8 @@ const AddExpenseForm = () => {
           <input
             required
             type="text"
+            placeholder="Expense Name"
+            data-testid ="expenseName"
             className="form-control"
             id="name"
             value={name}
@@ -48,6 +50,8 @@ const AddExpenseForm = () => {
           <input
             required
             type="number"
+            placeholder="123"
+            data-testid ="expenseCost"
             className="form-control"
             id="cost"
             value={cost}
