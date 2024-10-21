@@ -1,10 +1,19 @@
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 import { Expense } from "../../types/types";
 
 const ExpenseItem = (currentExpense: Expense) => {
   // Exercise: Consume the AppContext here
-
+  const expenses = useContext(AppContext).expenses;
+  const setExpenses = useContext(AppContext).setExpenses;
+  
   const handleDeleteExpense = (currentExpense: Expense) => {
     // Exercise: Remove expense from expenses context array
+    const updatedExpenses = expenses.filter(expense => expense.id !== currentExpense.id);
+
+  // Set the new array in the state, triggering a re-render
+    setExpenses(updatedExpenses);
+    
   };
 
   return (
