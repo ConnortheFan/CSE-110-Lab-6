@@ -105,7 +105,7 @@ test("Calculate the remaining budget", () => {
   fireEvent.click(deleteExpenseButton);
 
   const newBudget10000 = screen.getByText("Remaining: $10000");
-  expect(newBudget).toBeInTheDocument();
+  expect(newBudget10000).toBeInTheDocument();
 });
 
 // make sure Remaining is calculated correctly, negative
@@ -134,7 +134,7 @@ test("Calculate the remaining budget, negative", () => {
   fireEvent.click(deleteExpenseButton);
 
   const newBudget10000 = screen.getByText("Remaining: $10000");
-  expect(newBudget).toBeInTheDocument();
+  expect(newBudget10000).toBeInTheDocument();
 });
 
 
@@ -152,7 +152,7 @@ test("Alert popup", () => {
   fireEvent.change(createExpenseCost, {
     target: { value: 20000 },
   });
-  
+
   const alertMock = jest.spyOn(window,'alert');
   fireEvent.click(createExpenseButton);
   
