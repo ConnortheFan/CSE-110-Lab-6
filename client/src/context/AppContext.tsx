@@ -9,12 +9,15 @@ interface AppContextType {
   expenses: Expense[];
   setExpenses: React.Dispatch<React.SetStateAction<Expense[]>>;
   budget: number;
+  setBudget: React.Dispatch<React.SetStateAction<number>>;
+  // setbudegt
 }
 
 const initialState: AppContextType = {
   expenses: [],
   setExpenses: () => {},
-  budget: 10000
+  budget: 0,
+  setBudget: () => {}
 };
 
 export const AppContext = createContext<AppContextType>(initialState);
@@ -28,7 +31,8 @@ export const AppProvider = (props: any) => {
       value={{
         expenses: expenses,
         setExpenses: setExpenses,
-        budget: budget
+        budget: budget,
+        setBudget: setBudget
       }}
     >
       {props.children}
