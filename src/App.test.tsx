@@ -25,7 +25,7 @@ test("creates a new expense", () => {
   const newExpenseName = screen.getByText("ABCDE");
   const newExpenseCost = screen.getByText("$123");
 
-  expect(newExpenseName).toBeInTheDocument();
+  expect(newExpenseName).toBeInTheDocument(); //INCORRECT!!
   expect(newExpenseCost).toBeInTheDocument();
 });
 
