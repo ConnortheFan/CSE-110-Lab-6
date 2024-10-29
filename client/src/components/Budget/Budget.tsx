@@ -2,7 +2,7 @@
 import { AppContext } from "../../context/AppContext";
 import { useContext, useEffect } from "react";
 import { Expense } from "../../types/types";
-import { fetchBudget } from "../../utils/budget-utils";
+import { fetchBudget, updateBudget } from "../../utils/budget-utils";
 
 const Budget = () => 
   {
@@ -16,24 +16,20 @@ const Budget = () =>
     
       // Function to load expenses and handle errors
       const loadBudget = async () => {
-      try {
-        const budget = await fetchBudget();
-        setBudget(budget)
-        
-      } catch (err: any) {
-        console.log(err.message);
-      }
+        try {
+          const initialBudget = await fetchBudget();
+          setBudget(initialBudget);
+        } catch (err: any) {
+          console.log(err.message);
+        }
       };
-      
-     // const {budget, setBudget} = useEffect
-      // const { budget } = useContext(AppContext);
     
-      const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+      const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-    
-        const newBudget: number = budget;
         console.log(budget);
-        updateBudget(newBudget);
+        const newBudget  = await updateBudget(budget);
+               
+        setBudget(newBudget);
         
         console.log(budget); 
       };
@@ -51,6 +47,7 @@ const Budget = () =>
             value={budget}
             // HINT: onChange={}
             onChange={(event) => 
+
               setBudget(event.target.valueAsNumber)
             }
           ></input>
@@ -67,7 +64,4 @@ const Budget = () =>
 };
 
 export default Budget;
-function updateBudget(newBudget: number) {
-  throw new Error("Function not implemented.");
-}
 
