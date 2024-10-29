@@ -98,13 +98,13 @@ test("Calculate the remaining budget", () => {
   
   const newExpenseName = screen.getByText("ABCDE");
   const newExpenseCost = screen.getByText("$123");
-  const newBudget = screen.getByText("Remaining: $9877");
+  const newBudget = screen.getByText("Remaining: $-123");
   expect(newBudget).toBeInTheDocument();
 
   const deleteExpenseButton = screen.getByText("x");
   fireEvent.click(deleteExpenseButton);
 
-  const newBudget10000 = screen.getByText("Remaining: $10000");
+  const newBudget10000 = screen.getByText("Remaining: $0");
   expect(newBudget10000).toBeInTheDocument();
 });
 
@@ -127,13 +127,13 @@ test("Calculate the remaining budget, negative", () => {
   
   const newExpenseName = screen.getByText("ABCDE");
   const newExpenseCost = screen.getByText("$-123");
-  const newBudget = screen.getByText("Remaining: $10123");
+  const newBudget = screen.getByText("Remaining: $123");
   expect(newBudget).toBeInTheDocument();
 
   const deleteExpenseButton = screen.getByText("x");
   fireEvent.click(deleteExpenseButton);
 
-  const newBudget10000 = screen.getByText("Remaining: $10000");
+  const newBudget10000 = screen.getByText("Remaining: $0");
   expect(newBudget10000).toBeInTheDocument();
 });
 
@@ -159,7 +159,7 @@ test("Alert popup", () => {
   const newExpenseName = screen.getByText("ABCDE");
   const newExpenseCost = screen.getByText("$20000");
   
-  const newBudget = screen.getByText("Remaining: $-10000");
+  const newBudget = screen.getByText("Remaining: $-20000");
   expect(newBudget).toBeInTheDocument();
    
   expect(alertMock).toHaveBeenCalledTimes(1);

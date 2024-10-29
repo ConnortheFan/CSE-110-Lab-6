@@ -55,7 +55,7 @@ const Budget = () =>
         <div className="col-sm">
           <button type="submit" 
           className="btn btn-primary mt-3">
-            Save
+            Save Budget
           </button>
         </div>
       
