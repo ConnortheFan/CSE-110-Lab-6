@@ -3,6 +3,7 @@ import { AppContext, AppProvider } from "../../context/AppContext";
 import { Expense } from "../../types/types";
 import { createExpense } from "../../utils/expense-utils";
 
+
 const AddExpenseForm = () => {
   // Exercise: Consume the AppContext here
   // const expenses = useContext(AppContext).expenses;
@@ -19,7 +20,7 @@ const AddExpenseForm = () => {
 
   // Exercise: Add add new expense to expenses context array
   
-    const newExpense: Expense = {id : (expenses.length+1).toString(), description : name, cost: cost };
+    const newExpense: Expense = {id : (new Date().getTime()).toString(), description : name, cost: cost };
     // console.log(expenses);
     createExpense(newExpense);
     const updatedExpenses = [...expenses, newExpense];
